@@ -2,7 +2,11 @@
     font-family: 'Fortnite';
     src: url('font/BurbankBigCondensed-Black.otf');
 }*/
-
+@media (max-width: 768px) {
+    .container {
+        width: 90% !important;
+    }
+}
   
 body {
     background-image: url(../kepek/background.jpg);

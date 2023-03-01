@@ -10,7 +10,7 @@
 }
 
 body {
-    background-image: url("https://cdn2.unrealengine.com/t-bp23-lobby-2048x1024-2048x1024-26f2c1b27f63.png");
+    background-color: #000000;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

@@ -7,6 +7,9 @@
     .container {
         width: 90% !important;
     }
+    #containerKulonbseg {
+        width: 90% !important;
+    }
 }
 
 body {
@@ -41,6 +44,11 @@ button.disabled {
     background-color: rgb(255,0,0);
 }
 
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
 .container {
     align-items: center;
     justify-content: center;
@@ -48,8 +56,12 @@ button.disabled {
     background-color: rgba(255, 255, 255, 0.7);
     width: 35%;
     border-radius: 15px;
-    padding-top: 15px;
+    padding: 10px;
     margin: 25px auto;
+}
+
+#containerKulonbseg {
+    width: 20%;
 }
 
 li {
@@ -70,20 +82,3 @@ p, h3{
 h3{
     text-align: left;
 }
-
-/*.loading-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    z-index: 9999;
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 0.5s ease-out;
-  }
-*/

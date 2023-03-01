@@ -1,18 +1,6 @@
-async function update() {
-    const settings  = {
-        method : "GET",
-        headers: {
-            Authorization : "5bf91731-a9be325a-7d3e0505-a5114310"
-        }
-    }
-    
-    try {
-        let fetchResponse = await fetch("https://fortniteapi.io/v2/shop?lang=en", settings);
-        const data = await fetchResponse.text();
-        console.log(data)
-
-        
-    } catch (e) {
-        console.log(e);
-    }
+window.onload = async function(){
+    let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
+    let data = await response.json();
+    console.log(data.backgrounds.backgrounds[0].backgroundimage)
+    document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
 }

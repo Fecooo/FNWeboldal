@@ -5,7 +5,11 @@
 
   
 body {
-    background-image: url(kepek/background.jpg);
+    background-color: #000000;
+    backdrop-filter: blur(5px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 h1

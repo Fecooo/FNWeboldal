@@ -55,41 +55,34 @@ function timer(){
 }
 
 async function tabokUpdate() {
-    const settings  = {
-        method : "GET",
-        headers: {
-            Authorization : "5bf91731-a9be325a-7d3e0505-a5114310"
-        }
-    }
-    
+
     const settings1  = {
         method : "GET"
     }
     
     try {
-        let fetchResponse = await fetch("https://fortniteapi.io/v2/shop?lang=en", settings);
+        let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/https://api.nitestats.com/v1/epic/modes-smart", settings1);
         const data = await fetchResponse.json();
 
         const tabok = [];
         
-        for (const key in data.currentRotation) {
+        for (const key in data.channels['client-events'].states[0].state.sectionStoreEnds) {
             tabok.push(key);
 
-            console.log(data.currentRotation[key]);
-            if(data.currentRotation[key].split(':')[0].split(' ')[1] < currentLejarat[2]) {
-                currentLejarat[2] = parseInt(data.currentRotation[key].split(':')[0].split(' ')[1]) + 1;
+            if(data.channels['client-events'].states[0].state.sectionStoreEnds[key].split(':')[0].split('T')[1] < currentLejarat[2]) {
+                currentLejarat[2] = parseInt(data.channels['client-events'].states[0].state.sectionStoreEnds[key].split(':')[0].split('T')[1]) + 1;
             }
-            if(data.currentRotation[key].split(' ')[0].split('-')[2] < currentLejarat[1]) {
-                currentLejarat[1] = parseInt(data.currentRotation[key].split(' ')[0].split('-')[2]);
+            if(data.channels['client-events'].states[0].state.sectionStoreEnds[key].split('T')[0].split('-')[2] < currentLejarat[1]) {
+                currentLejarat[1] = parseInt(data.channels['client-events'].states[0].state.sectionStoreEnds[key].split('T')[0].split('-')[2]);
                 if(currentLejarat[2] == 0){
                     currentLejarat[1]++;
                 }
             }
-            if(data.currentRotation[key].split(' ')[0].split('-')[1] < currentLejarat[0]) {
-                currentLejarat[0] = parseInt(data.currentRotation[key].split(' ')[0].split('-')[1]);
+            if(data.channels['client-events'].states[0].state.sectionStoreEnds[key].split('T')[0].split('-')[1] < currentLejarat[0]) {
+                currentLejarat[0] = parseInt(data.channels['client-events'].states[0].state.sectionStoreEnds[key].split('T')[0].split('-')[1]);
             }
         }
-        
+
         console.log("A shop lejár: " + currentLejarat[1] + ". napon " + currentLejarat[2] + " órakor");
         document.getElementById("lejarat").innerText = "A shop lejár " + honapok[currentLejarat[0] - 1] + " " + currentLejarat[1] + ". " + currentLejarat[2] + " órakor";
         document.getElementById("jelenlegi").innerText = "Jelenlegi shop (" + tabok.length + "x):";
@@ -104,7 +97,7 @@ async function tabokUpdate() {
 
                 if(tabok[i] == data1.sectionList.sections[key].sectionId){
 
-                    if(data1.sectionList.sections[key].sectionDisplayName != null){
+                    if(data1.sectionList.sections[key].sectionDisplayName != null  && data1.sectionList.sections[key].sectionDisplayName != ""){
                         display.push(data1.sectionList.sections[key].sectionDisplayName);
                     }
                     else {
@@ -170,18 +163,15 @@ async function lejar(){
     const currentMinutes = parseInt(now.getMinutes());
 
     if((currentLejarat[2] == 1 && (currentHour == 23 || currentHour == 0)) || ((currentHour == (currentLejarat[2] - 1)) || (currentHour == (currentLejarat[2] - 2)))){
-            
-        const settings  = {
-            method : "GET",
-            headers: {
-                Authorization : "5bf91731-a9be325a-7d3e0505-a5114310"
-            }
+        
+        const settings1  = {
+            method : "GET"
         }
 
-        let fetchResponse = await fetch("https://fortniteapi.io/v2/shop?lang=en", settings);
+        let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/https://api.nitestats.com/v1/epic/modes-smart", settings1);
         const data = await fetchResponse.json();
 
-        if(data.nextRotation != null) {
+        if(data.channels['client-events'].states[1].state.sectionStoreEnds != null) {
 
             if(!document.getElementById("containerNext")){
                 let div = document.createElement("div");
@@ -207,29 +197,24 @@ async function lejar(){
             document.getElementById("containerNext").appendChild(p);
 
             const tabok = [];
-            for (const key in data.nextRotation) {
+            for (const key in data.channels['client-events'].states[1].state.sectionStoreEnds) {
                 tabok.push(key);
 
-                console.log(data.nextRotation[key]);
-                if(data.nextRotation[key].split(':')[0].split(' ')[1] < nextLejarat[2]) {
-                    nextLejarat[2] = parseInt(data.nextRotation[key].split(':')[0].split(' ')[1]) + 1;
+                if(data.channels['client-events'].states[1].state.sectionStoreEnds[key].split(':')[0].split('T')[1] < nextLejarat[2]) {
+                    nextLejarat[2] = parseInt(data.channels['client-events'].states[1].state.sectionStoreEnds[key].split(':')[0].split('T')[1]) + 1;
                 }
-                if(data.nextRotation[key].split(' ')[0].split('-')[2] < nextLejarat[1]) {
-                    nextLejarat[1] = parseInt(data.nextRotation[key].split(' ')[0].split('-')[2]);
+                if(data.channels['client-events'].states[1].state.sectionStoreEnds[key].split('T')[0].split('-')[2] < nextLejarat[1]) {
+                    nextLejarat[1] = parseInt(data.channels['client-events'].states[1].state.sectionStoreEnds[key].split('T')[0].split('-')[2]);
                     if(nextLejarat[2] == 0){
                         nextLejarat[1]++;
                     }
                 }
-                if(data.nextRotation[key].split(' ')[0].split('-')[1] < nextLejarat[0]) {
-                    nextLejarat[0] = parseInt(data.nextRotation[key].split(' ')[0].split('-')[1]);
+                if(data.channels['client-events'].states[1].state.sectionStoreEnds[key].split('T')[0].split('-')[1] < nextLejarat[0]) {
+                    nextLejarat[0] = parseInt(data.channels['client-events'].states[1].state.sectionStoreEnds[key].split('T')[0].split('-')[1]);
                 }
             }
             p.innerText = "A következő shop lejár " + honapok[nextLejarat[0] - 1] + " " + nextLejarat[1] + ". " + nextLejarat[2] + " órakor";
             h3.innerText = "Következő shop (" + tabok.length + "x):";
-
-            const settings1  = {
-                method : "GET"
-            }
 
             let fetchResponse1 = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", settings1);
             const data1 = await fetchResponse1.json();
@@ -241,7 +226,7 @@ async function lejar(){
     
                     if(tabok[i] == data1.sectionList.sections[key].sectionId){
     
-                        if(data1.sectionList.sections[key].sectionDisplayName != null){
+                        if(data1.sectionList.sections[key].sectionDisplayName != null && data1.sectionList.sections[key].sectionDisplayName != ""){
                             display.push(data1.sectionList.sections[key].sectionDisplayName);
                         }
                         else {
@@ -300,52 +285,63 @@ async function lejar(){
 }
 
 function kulonbseg() {
-    if(!document.getElementById("containerKulonbseg")){
-        let div = document.createElement("div");
-        div.classList.add("container");
-        div.id = "containerKulonbseg";
-        document.getElementById("body").appendChild(div);
-    }
-    else {
-        document.getElementById("containerKulonbseg").innerHTML = "";
-    }
-
-    let addedTabs = currentTabok.filter(x => !nextTabok.includes(x));
-
-    let removedTabs = nextTabok.filter(x => !currentTabok.includes(x));
-
+    
+    let addedTabs = nextTabok.filter(x => !currentTabok.includes(x));
+    
+    let removedTabs = currentTabok.filter(x => !nextTabok.includes(x));
+    
     console.log("Added tabs:", addedTabs);
     console.log("Removed tabs:", removedTabs);
+    
+    if(addedTabs.length != 0 || removedTabs.length != 0){
 
-    let h3k = document.createElement("h3");
-    h3k.id = "kivett";
-    h3k.innerText = "Kivett tabok:"
-    document.getElementById("containerKulonbseg").appendChild(h3k);
-
-    let ulk = document.createElement("ul");
-    ulk.id = "tabokKivett";
-    ulk.innerHTML = "";
-    document.getElementById("containerKulonbseg").appendChild(ulk);
-
-    for (let i = 0; i < addedTabs.length; i++) {
-        let lik = document.createElement("li");
-        lik.innerText = addedTabs[i];
-        document.getElementById("tabokKivett").appendChild(lik);
+        if(!document.getElementById("containerKulonbseg")){
+            let div = document.createElement("div");
+            div.classList.add("container");
+            div.id = "containerKulonbseg";
+            document.getElementById("body").appendChild(div);
+        }
+        else {
+            document.getElementById("containerKulonbseg").innerHTML = "";
+        }
     }
 
-    let h3h = document.createElement("h3");
-    h3h.id = "hozzaadott";
-    h3h.innerText = "Hozzáadott tabok:"
-    document.getElementById("containerKulonbseg").appendChild(h3h);
+    if(addedTabs.length != 0){
+        
+        let h3h = document.createElement("h3");
+        h3h.id = "hozzaadott";
+        h3h.innerText = "Hozzáadott tabok:"
+        document.getElementById("containerKulonbseg").appendChild(h3h);
+        
+        let ulh = document.createElement("ul");
+        ulh.id = "tabokHozzaadott";
+        ulh.innerHTML = "";
+        document.getElementById("containerKulonbseg").appendChild(ulh);
 
-    let ulh = document.createElement("ul");
-    ulh.id = "tabokHozzaadott";
-    ulh.innerHTML = "";
-    document.getElementById("containerKulonbseg").appendChild(ulh);
-
-    for (let i = 0; i < removedTabs.length; i++) {
-        let lih = document.createElement("li");
-        lih.innerText = removedTabs[i];
-        document.getElementById("tabokHozzaadott").appendChild(lih);
+        for (let i = 0; i < addedTabs.length; i++) {
+            let lih = document.createElement("li");
+            lih.innerText = addedTabs[i];
+            document.getElementById("tabokHozzaadott").appendChild(lih);
+        }
     }
+    
+    if(removedTabs.length != 0){
+
+        let h3k = document.createElement("h3");
+        h3k.id = "kivett";
+        h3k.innerText = "Kivett tabok:"
+        document.getElementById("containerKulonbseg").appendChild(h3k);
+
+        let ulk = document.createElement("ul");
+        ulk.id = "tabokKivett";
+        ulk.innerHTML = "";
+        document.getElementById("containerKulonbseg").appendChild(ulk);
+        
+        for (let i = 0; i < removedTabs.length; i++) {
+            let lik = document.createElement("li");
+            lik.innerText = removedTabs[i];
+            document.getElementById("tabokKivett").appendChild(lik);
+        }
+    }
+
 }

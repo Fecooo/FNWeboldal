@@ -163,7 +163,7 @@ async function lejar(){
     const currentHour = parseInt(now.getHours());
     const currentMinutes = parseInt(now.getMinutes());
 
-    if(1 == 1){
+    if((currentLejarat[2] == 1 && (currentHour == 23 || currentHour == 0)) || ((currentHour == (currentLejarat[2] - 1)) || (currentHour == (currentLejarat[2] - 2)))){
         
         const settings1  = {
             method : "GET"

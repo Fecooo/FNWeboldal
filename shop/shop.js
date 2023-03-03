@@ -129,6 +129,7 @@ async function tabokUpdate() {
         if(lekeres != 1) {
             lekeres = 1;
             currentTabok = [];
+            tabStatCurrent = [];
         }
 
         for (let i = 0; i < display.length; i++) {
@@ -162,7 +163,7 @@ async function lejar(){
     const currentHour = parseInt(now.getHours());
     const currentMinutes = parseInt(now.getMinutes());
 
-    if((currentLejarat[2] == 1 && (currentHour == 23 || currentHour == 0)) || ((currentHour == (currentLejarat[2] - 1)) || (currentHour == (currentLejarat[2] - 2)))){
+    if(1 == 1){
         
         const settings1  = {
             method : "GET"
@@ -171,7 +172,7 @@ async function lejar(){
         let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/https://api.nitestats.com/v1/epic/modes-smart", settings1);
         const data = await fetchResponse.json();
 
-        if(data.channels['client-events'].states[1].state.sectionStoreEnds != null) {
+        if(data.channels['client-events'].states.length != 1) {
 
             if(!document.getElementById("containerNext")){
                 let div = document.createElement("div");
@@ -256,6 +257,7 @@ async function lejar(){
             if(lekeres != 1) {
                 lekeres = 1;
                 nextTabok = [];
+                tabStatNext = [];
             }
     
             for (let i = 0; i < display.length; i++) {

@@ -89,3 +89,77 @@ p, h3{
 h3{
     text-align: left;
 }
+
+/*
+    if(addedItemsCount.length != 0 || deletedItemsCount.length != 0){
+
+        if(!document.getElementById("containerKulonbseg")){
+            let div = document.createElement("div");
+            div.classList.add("container");
+            div.id = "containerKulonbseg";
+            document.getElementById("body").appendChild(div);
+        }
+        else {
+            document.getElementById("containerKulonbseg").innerHTML = "";
+        }
+    }
+
+    if(addedItemsCount.length != 0){
+        
+        let h3h = document.createElement("h3");
+        h3h.id = "hozzaadott";
+        h3h.innerText = "Hozzáadott tabok:"
+        document.getElementById("containerKulonbseg").appendChild(h3h);
+        
+        let ulh = document.createElement("ul");
+        ulh.id = "tabokHozzaadott";
+        ulh.innerHTML = "";
+        document.getElementById("containerKulonbseg").appendChild(ulh);
+
+
+        for (const key in addedItemsCount) {
+            let lih = document.createElement("li");
+            lih.innerText = key + " (" + addedItemsCount[key] + "x)";
+            document.getElementById("tabokHozzaadott").appendChild(lih);
+        }
+    }
+    
+    if(deletedItemsCount.length != 0){
+
+        let h3k = document.createElement("h3");
+        h3k.id = "kivett";
+        h3k.innerText = "Kivett tabok:"
+        document.getElementById("containerKulonbseg").appendChild(h3k);
+
+        let ulk = document.createElement("ul");
+        ulk.id = "tabokKivett";
+        ulk.innerHTML = "";
+        document.getElementById("containerKulonbseg").appendChild(ulk);
+        
+        for (const key in deletedItemsCount) {
+            let lik = document.createElement("li");
+            lik.innerText = key + " (" + deletedItemsCount[key] + "x)";
+            document.getElementById("tabokKivett").appendChild(lik);
+        }
+    }
+    */
+
+    /*
+        const addedItems = Object.keys(nextTabok).filter((key) => !currentTabok.hasOwnProperty(key));
+    const addedItemsCount = addedItems.reduce((acc, key) => {
+      acc[key] = nextTabok[key];
+      return acc;
+    }, {});
+    
+    console.log("Added items:");
+    console.log(addedItemsCount);
+    
+    const deletedItems = Object.keys(currentTabok).filter((key) => !nextTabok.hasOwnProperty(key));
+    const deletedItemsCount = deletedItems.reduce((acc, key) => {
+      acc[key] = currentTabok[key];
+      return acc;
+    }, {});
+    
+    console.log("Deleted items:");
+    console.log(deletedItemsCount);
+    */

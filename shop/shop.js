@@ -1,6 +1,8 @@
 var lekeres = 0;
 var currentTabok = [];
+var tabStatCurrent = {};
 var nextTabok = [];
+var tabStatNext = {};
 var currentLejarat = [99, 99, 99]; // month, day, hour
 var nextLejarat = [99, 99, 99]; // month, day, hour
 var honapok = ["Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"];
@@ -132,21 +134,19 @@ async function tabokUpdate() {
         for (let i = 0; i < display.length; i++) {
             currentTabok.push(display[i]);
         }
-
-        const tabStat = {};
         
         for (let i = 0; i < currentTabok.length; i++) {
-            if (currentTabok[i] in tabStat) {
-                tabStat[currentTabok[i]] += 1;
+            if (currentTabok[i] in tabStatCurrent) {
+                tabStatCurrent[currentTabok[i]] += 1;
             }
             else {
-                tabStat[currentTabok[i]] = 1;
+                tabStatCurrent[currentTabok[i]] = 1;
             }
         }
         
-        for (const key in tabStat) {
+        for (const key in tabStatCurrent) {
             let li = document.createElement("li");
-            li.innerText = key + " (" + tabStat[key] + "x)";
+            li.innerText = key + " (" + tabStatCurrent[key] + "x)";
             document.getElementById("tabok").appendChild(li);
         }
         
@@ -261,21 +261,19 @@ async function lejar(){
             for (let i = 0; i < display.length; i++) {
                 nextTabok.push(display[i]);
             }
-            
-            const tabStat = {};
 
             for (let i = 0; i < nextTabok.length; i++) {
-                if (nextTabok[i] in tabStat) {
-                    tabStat[nextTabok[i]] += 1;
+                if (nextTabok[i] in tabStatNext) {
+                    tabStatNext[nextTabok[i]] += 1;
                 }
                 else {
-                    tabStat[nextTabok[i]] = 1;
+                    tabStatNext[nextTabok[i]] = 1;
                 }
             }
             
-            for (const key in tabStat) {
+            for (const key in tabStatNext) {
                 let li = document.createElement("li");
-                li.innerText = key + " (" + tabStat[key] + "x)";
+                li.innerText = key + " (" + tabStatNext[key] + "x)";
                 document.getElementById("tabokNext").appendChild(li);
             }
 
@@ -285,6 +283,8 @@ async function lejar(){
 }
 
 function kulonbseg() {
+    console.log(tabStatCurrent)
+    console.log(tabStatNext)
     
     let addedTabs = nextTabok.filter(x => !currentTabok.includes(x));
     

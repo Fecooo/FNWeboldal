@@ -50,3 +50,10 @@ p, h3{
     text-align: right;
     font-weight: bold;
 }
+li {
+    margin: 0 auto;
+    text-align: justify;
+    font-weight: bold;
+    list-style: none;
+    padding-left: 20px;
+}

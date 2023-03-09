@@ -159,6 +159,8 @@ async function lejar(){
 
     if((currentLejarat[2] == 1 && (currentHour == 23 || currentHour == 0)) || ((currentHour == (currentLejarat[2] - 1)) || (currentHour == (currentLejarat[2] - 2)))){
 
+        console.log("ping");
+        
         let ping =  setInterval(async() => {
 
             const settings1  = {
@@ -171,7 +173,9 @@ async function lejar(){
             if(data.channels['client-events'].states.length != 1) {
     
                 clearInterval(ping);
-    
+                
+                console.log("Elvileg vége a ping nek :)");
+                
                 if(!document.getElementById("containerNext")){
                     let div = document.createElement("div");
                     div.classList.add("container");

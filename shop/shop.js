@@ -159,8 +159,6 @@ async function lejar(){
 
     if((currentLejarat[2] == 1 && (currentHour == 23 || currentHour == 0)) || ((currentHour == (currentLejarat[2] - 1)) || (currentHour == (currentLejarat[2] - 2)))){
 
-        console.log("ping");
-        
         let ping =  setInterval(async() => {
 
             const settings1  = {
@@ -173,9 +171,7 @@ async function lejar(){
             if(data.channels['client-events'].states.length != 1) {
     
                 clearInterval(ping);
-                
-                console.log("Elvileg vége a ping nek :)");
-                
+    
                 if(!document.getElementById("containerNext")){
                     let div = document.createElement("div");
                     div.classList.add("container");
@@ -329,7 +325,7 @@ function kulonbseg() {
         }
     }
 
-    if(addedTabsSum.length != 0 || removedTabsSum.length != 0){
+    if(Object.keys(addedTabsSum).length != 0 || Object.keys(removedTabsSum).length != 0){
 
         if(!document.getElementById("containerKulonbseg")){
             let div = document.createElement("div");
@@ -342,7 +338,7 @@ function kulonbseg() {
         }
     }
 
-    if(addedTabsSum.length != 0){
+    if(Object.keys(addedTabsSum).length != 0){
         
         let h3h = document.createElement("h3");
         h3h.id = "hozzaadott";
@@ -361,7 +357,7 @@ function kulonbseg() {
         }
     }
     
-    if(removedTabsSum.length != 0){
+    if(Object.keys(removedTabsSum).length != 0){
 
         let h3k = document.createElement("h3");
         h3k.id = "kivett";

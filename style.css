@@ -2,14 +2,25 @@
     font-family: 'Fortnite';
     src: url('font/BurbankBigCondensed-Black.otf');
 }*/
-  
+
+@media (min-width: 768px) {
+    .nav-item{
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 15px;
+        padding: 0;
+        margin-right: 30px;
+        text-align: center;
+        width: 110px;
+        background-color: black;
+    }
+}
+
 body {
-    background-image: url("https://cdn2.unrealengine.com/t-bp23-lobby-2048x1024-2048x1024-26f2c1b27f63.png");
     background-color: #000000;
-    backdrop-filter: blur(5px);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
 }
 
 h4, h1 {
@@ -40,7 +51,9 @@ p{
 
 #progressBorder {
     margin: auto;
+    padding: 0px;
     border: 5px solid black;
+    border-radius: 15px;
     text-align: center;
 }
 
@@ -49,8 +62,10 @@ p{
     background-color: rgb(35, 86, 252);
     font-size: 24px;
     font-weight: bold;
-    padding: 15px;
+    padding: 20px;
+    width: 0%;
 }
+
 li {
     margin: 0 auto;
     text-align: justify;

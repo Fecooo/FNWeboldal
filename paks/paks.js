@@ -1,30 +1,52 @@
 window.onload = async function(){
-    let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
-    let data = await response.json();
-    console.log(data.backgrounds.backgrounds[0].backgroundimage)
-    document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
+
+    try {
+        let response = await fetch("https://api.allorigins.win/raw?url=https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
+        let data = await response.json();
+        document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
+    } catch (err) {
+        console.log(err);
+    }
 
     await kiirat();
 }
 
 async function kiirat() {
-    let response = await fetch("https://fortnitecentral.genxgames.gg/api/v1/aes", {method: "GET"});
-    const data = await response.json();
+
+    try {
+        let response = await fetch("https://fortnitecentral.genxgames.gg/api/v1/aes", {method: "GET"});
+        const data = await response.json();
+        
+        document.getElementById("version").innerHTML = data.version
+        document.getElementById("mainKey").innerHTML = data.mainKey
+
+        pakok = data.unloaded.length
+        nevek = []
+        fileok = []
+        highres = []
+        meret = []
     
-    document.getElementById("version").innerHTML = data.version
-    document.getElementById("mainKey").innerHTML = data.mainKey
+        for (let i = 0; i < pakok; i++) {
+            nevek.push(data.unloaded[i].name.substring(8, 12))
+            fileok.push(data.unloaded[i].fileCount)
+            highres.push(data.unloaded[i].hasHighResTextures.toString())
+            meret.push(data.unloaded[i].size.formatted)
+        }
 
-    pakok = data.unloaded.length
-    nevek = []
-    fileok = []
-    highres = []
-    meret = []
-
-    for (let i = 0; i < pakok; i++) {
-        nevek.push(data.unloaded[i].name.substring(8, 12))
-        fileok.push(data.unloaded[i].fileCount)
-        highres.push(data.unloaded[i].hasHighResTextures.toString())
-        meret.push(data.unloaded[i].size.formatted)
+        pakok = data.dynamicKeys.length
+        nevek = []
+        fileok = []
+        highres = []
+        meret = []
+    
+        for (let i = 0; i < pakok; i++) {
+            nevek.push(data.dynamicKeys[i].name.substring(8, 12))
+            fileok.push(data.dynamicKeys[i].fileCount)
+            highres.push(data.dynamicKeys[i].hasHighResTextures.toString())
+            meret.push(data.dynamicKeys[i].size.formatted)
+        }
+    } catch (err) {
+        console.log(err);
     }
 
     console.log(nevek)
@@ -48,19 +70,6 @@ async function kiirat() {
         tr.appendChild(tdhigh)
         tr.appendChild(tdmeret)
         titkos.appendChild(tr)
-    }
-
-    pakok = data.dynamicKeys.length
-    nevek = []
-    fileok = []
-    highres = []
-    meret = []
-
-    for (let i = 0; i < pakok; i++) {
-        nevek.push(data.dynamicKeys[i].name.substring(8, 12))
-        fileok.push(data.dynamicKeys[i].fileCount)
-        highres.push(data.dynamicKeys[i].hasHighResTextures.toString())
-        meret.push(data.dynamicKeys[i].size.formatted)
     }
 
     console.log(nevek)

@@ -10,6 +10,12 @@
     }
 }
 
+@media (max-width: 768px) {
+    .container {
+        width: 90% !important;
+    }
+}
+
 body {
     background-color: #000000;
     background-repeat: no-repeat;
@@ -58,9 +64,10 @@ h1
 }
 
 p, h3{
+    font-size: 25px;
     margin: 0 auto;
-    text-align: right;
     font-weight: bold;
+    padding: 5px;
 }
 li {
     margin: 0 auto;
@@ -68,4 +75,20 @@ li {
     font-weight: bold;
     list-style: none;
     padding-left: 20px;
+}
+
+.progressBorder {
+    margin: auto;
+    padding: 0px;
+    border: 5px solid black;
+    text-align: center;
+}
+
+.progressBar {
+    color: white;
+    background-color: rgb(35, 86, 252);
+    font-size: 24px;
+    font-weight: bold;
+    height: 40px;
+    width: 0%;
 }

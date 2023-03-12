@@ -209,7 +209,7 @@ async function lejar() {
                     p.innerText = "A következő shop lejár " + honapok[nextLejarat[0] - 1] + " " + nextLejarat[1] + ". " + nextLejarat[2] + " órakor";
                     h3.innerText = "Következő shop (" + tabok.length + "x):";
             
-                    let fetchResponse1 = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", settings1);
+                    let fetchResponse1 = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", { method : "GET" });
                     const data1 = await fetchResponse1.json();
             
                     const display = [];

@@ -4,7 +4,7 @@ var seasonEnd = [];
 window.onload = async function () {
 
   try {
-    let response = await fetch("https://api.allorigins.win/raw?url=https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds",{ method: "GET" });
+    let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds",{ method: "GET" });
     let data = await response.json();
     document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
   } catch(err) {
@@ -17,7 +17,7 @@ window.onload = async function () {
 async function visszaszamlalo() {
 
   try {
-    let fetchResponse = await fetch("https://api.allorigins.win/raw?url=https://api.nitestats.com/v1/epic/modes-smart", {method : "GET"});
+    let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/url=https://api.nitestats.com/v1/epic/modes-smart", {method : "GET"});
     const data = await fetchResponse.json();
 
     seasonStart[0] = parseInt(data.channels['client-events'].states[0].state.seasonBegin.split('T')[0].split('-')[0]).toString();

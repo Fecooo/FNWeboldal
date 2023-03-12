@@ -1,7 +1,7 @@
 window.onload = async function(){
 
     try{
-        let response = await fetch("https://api.allorigins.win/raw?url=https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
+        let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
         let data = await response.json();
         document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
     } catch(err) {
@@ -14,7 +14,7 @@ window.onload = async function(){
 async function kiirat() {
 
     try {
-        let response = await fetch("https://api.allorigins.win/raw?url=https://api.nitestats.com/v1/epic/modes-smart", {method: "GET"});
+        let response = await fetch("https://cors-anywhere.herokuapp.com/https://api.nitestats.com/v1/epic/modes-smart", {method: "GET"});
         const data = await response.json();
         
         let statesLen = data.channels['client-events'].states.length

@@ -1,14 +1,24 @@
 var seasonStart = [];
 var seasonEnd = [];
-const cors = require('cors');
-app.use(cors({ origin: 'https://fecooo.github.io/FNWeboldal/' }));
 
 window.onload = async function () {
 
   try {
-    let response = await fetch("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds",{ method: "GET" });
+    fetch('https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+
+
+    /*let response = await fetch("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds",{ method: "GET" });
     let data = await response.json();
-    document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
+    document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;*/
   } catch(err){
     console.log(err);
   }

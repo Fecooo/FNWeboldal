@@ -9,7 +9,7 @@ var honapok = ["Január", "Február", "Március", "Április", "Május", "Június
 
 window.onload = async function(){
     try {
-        let response = await fetch("https://api.allorigins.win/raw?url=https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
+        let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
         let data = await response.json();
         document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
     } catch(err) {
@@ -62,7 +62,7 @@ async function update(){
 async function tabokUpdate() {
     
     try {
-        let fetchResponse = await fetch("https://api.allorigins.win/raw?url=https://api.nitestats.com/v1/epic/modes-smart", { method : "GET" });
+        let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/url=https://api.nitestats.com/v1/epic/modes-smart", { method : "GET" });
         const data = await fetchResponse.json();
 
         const tabok = [];
@@ -82,7 +82,7 @@ async function tabokUpdate() {
         document.getElementById("lejarat").innerText = "A shop lejár " + honapok[currentLejarat[0] - 1] + " " + currentLejarat[1] + ". " + currentLejarat[2] + " órakor";
         document.getElementById("jelenlegi").innerText = "Jelenlegi shop (" + tabok.length + "x):";
         
-        let fetchResponse1 = await fetch("https://api.allorigins.win/raw?url=https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", { method : "GET" });
+        let fetchResponse1 = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", { method : "GET" });
         const data1 = await fetchResponse1.json();
 
         const display = [];
@@ -164,7 +164,7 @@ async function lejar() {
         
             try {
 
-                let fetchResponse = await fetch("https://api.allorigins.win/raw?url=https://api.nitestats.com/v1/epic/modes-smart", { method : "GET" });
+                let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/https://api.nitestats.com/v1/epic/modes-smart", { method : "GET" });
                 const data = await fetchResponse.json();
             
                 if(data.channels['client-events'].states.length != 1) {
@@ -209,7 +209,7 @@ async function lejar() {
                     p.innerText = "A következő shop lejár " + honapok[nextLejarat[0] - 1] + " " + nextLejarat[1] + ". " + nextLejarat[2] + " órakor";
                     h3.innerText = "Következő shop (" + tabok.length + "x):";
             
-                    let fetchResponse1 = await fetch("https://api.allorigins.win/raw?url=https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", settings1);
+                    let fetchResponse1 = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", settings1);
                     const data1 = await fetchResponse1.json();
             
                     const display = [];

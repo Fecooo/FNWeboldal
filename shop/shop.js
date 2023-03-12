@@ -62,7 +62,7 @@ async function update(){
 async function tabokUpdate() {
     
     try {
-        let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/url=https://api.nitestats.com/v1/epic/modes-smart", { method : "GET" });
+        let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/https://api.nitestats.com/v1/epic/modes-smart", { method : "GET" });
         const data = await fetchResponse.json();
 
         const tabok = [];

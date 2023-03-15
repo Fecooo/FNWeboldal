@@ -37,39 +37,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../eventflag/flag.html">Eventflag</a>
                 </li>
+                <button class="nav-item" id="lightdark" onclick="toggle()">🌙</button>
             </ul>
           </div>
         </div>
       </nav>
 
-    <div class="container">
-        <h1><span id="version">xx.xx</span> verzió PAK csomagok</h1>
-        <h5>Verzió kulcs: <br><span id="mainKey"></span></h5>
+    <div class="container" id="container">
+        <h1><span id="version">xx.xx</span> PAK csomagok</h1>
+        <button onclick="versionKey()" id="ver"><h3 id="versionKey">Verzió kulcs</h3></button>
     </div>
 
-    <div class="container">
-        <h3 id="titkositottTitle">Titkosított</h3><br>
-        <table id="titkositott">
-            <tr>
-                <th>PAK neve</th>
-                <th>Fájlok száma</th>
-                <th>Magas felbontású</th>
-                <th>Méret</th>
-            </tr>
-        </table>
-    </div>
+    <div id="containerwrapper" class="container-wrapper"></div>
 
-    <div class="container">
-        <h3 id="titkositatlanTitle">Titkosítatlan</h3><br>
-        <table id="titkositatlan">
-            <tr>
-                <th>PAK neve</th>
-                <th>Fájlok száma</th>
-                <th>Magas felbontású</th>
-                <th>Méret</th>
-            </tr>
-        </table>
-    </div>
 </body>
 
 </html>

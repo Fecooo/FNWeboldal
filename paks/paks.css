@@ -18,6 +18,9 @@
     .container-wrapper {
         display: block !important;
     }
+    .container, .containerN, .container-night, .containerN-night, #titkositott, #titkositatlan {
+        width: 90% !important;
+    }
 }
 
 body {

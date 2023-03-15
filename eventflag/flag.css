@@ -3,6 +3,7 @@
         border: 3px solid rgb(255, 255, 255);
         border-radius: 15px;
         padding: 0;
+        margin: 10px auto;
         margin-right: 30px;
         text-align: center;
         width: 110px;
@@ -24,24 +25,6 @@ body {
     background-position: center;
 }
 
-table {
-    border: 1px solid black;
-    width: 80%;
-    margin: auto;
-    color: rgb(207, 207, 207);
-}
-th, td {
-    width: 25%;
-    height: 50px;
-    border: 1px solid black;
-}
-table tr:nth-child(even) {
-    background-color: rgb(75, 75, 75);
-}
-table tr:nth-child(odd) {
-    background-color: rgb(0, 0, 0);
-}
-
 h1
 {
     padding: 10px;
@@ -49,6 +32,7 @@ h1
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 5px;
+    font-weight: bold;
 }
 
 .container {
@@ -57,6 +41,20 @@ h1
     justify-content: center;
     box-shadow: 5px 5px 5px #000000;
     background-color: rgba(255, 255, 255, 0.7);
+    width: 50%;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 25px auto;
+}
+
+.container-night {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #fff;
+    box-shadow: 5px 5px 5px #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
     width: 50%;
     border-radius: 15px;
     padding: 15px;

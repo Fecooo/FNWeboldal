@@ -1,3 +1,5 @@
+var ld = "light";
+
 window.onload = async function(){
 
     try{
@@ -9,6 +11,32 @@ window.onload = async function(){
     }
 
     await kiirat();
+}
+
+function toggle() {
+
+  if (document.getElementById("lightdark").textContent == "🌙") {
+
+      var elements = document.querySelectorAll(".container");
+      for (var i = 0; i < elements.length; i++) {
+          elements[i].classList.value = "container-night";
+      }
+
+      document.getElementById("lightdark").textContent = "☀️";
+      ld = "dark";
+      document.getElementById("progressBorder").style.border = "5px solid white";
+
+  } else if (document.getElementById("lightdark").textContent == "☀️") {
+
+      var elements = document.querySelectorAll(".container-night");
+      for (var i = 0; i < elements.length; i++) {
+          elements[i].classList.value = "container";
+      }
+
+      document.getElementById("lightdark").textContent = "🌙";
+      ld = "light";
+      document.getElementById("progressBorder").style.border = "5px solid black";
+  }
 }
 
 async function kiirat() {
@@ -34,8 +62,6 @@ async function kiirat() {
         console.log(err);
     }
 
-    //.replace("T", ". ").replace("Z", " ").replace("-", ".").replace("-", ".")
-
     console.log(nev)
     console.log(kezdet)
     console.log(veg)
@@ -45,7 +71,11 @@ async function kiirat() {
         for (let i = 0; i < flags; i++) {
     
             let cont = document.createElement("div");
-            cont.classList.add("container");
+            if(ld == "light"){
+              cont.classList.add("container");
+            } else {
+              cont.classList.add("container-night");
+            }
     
             let h2 = document.createElement("h2");
             h2.innerHTML=nev[i];
@@ -53,6 +83,12 @@ async function kiirat() {
     
             let progBorder = document.createElement("div");
             progBorder.classList.add("progressBorder");
+            progBorder.id = "progressBorder";
+            if(ld == "light"){
+              progBorder.style.border = "5px solid black";
+            } else {
+              progBorder.style.border = "5px solid white";
+            }
             let progBar = document.createElement("div");
             progBar.classList.add("progressBar");
     
@@ -95,20 +131,4 @@ async function kiirat() {
             document.getElementById("cont").appendChild(cont);
         }
     }, 1000);
-
-    /*let tablazat = document.getElementById("eventFlags")
-
-    for (let i = 0; i < flags; i++) {
-        let tr = document.createElement("tr")
-        let tdnev = document.createElement("td")
-        let tdkezdet = document.createElement("td")
-        let tdveg = document.createElement("td")
-        tdnev.innerHTML=nev[i]
-        tdkezdet.innerHTML=kezdet[i]
-        tdveg.innerHTML=veg[i]
-        tr.appendChild(tdnev)
-        tr.appendChild(tdkezdet)
-        tr.appendChild(tdveg)
-        tablazat.appendChild(tr)
-    }*/
 }

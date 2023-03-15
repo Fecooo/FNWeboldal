@@ -18,46 +18,13 @@ window.onload = async function(){
 
     await tabokUpdate();
     await lejar();
-    //timer();
 }
 
 async function update(){
     document.getElementById("tabok").innerHTML = "";
     await tabokUpdate();
     await lejar();
-    //timer();
 }
-
-/*function timer(){
-    const button = document.getElementById('countdown');
-    let timeLeft = 30;
-    let countdownTimer;
-    
-    function startTimer() {
-        countdownTimer = setInterval(() => {
-          if (timeLeft > 0) {
-            timeLeft--;
-            button.innerHTML = `Frissítés (${timeLeft}s)`;
-          } else {
-            clearInterval(countdownTimer);
-            button.disabled = true;
-            button.classList.add("disabled");
-        }
-        }, 1000);
-      }
-  
-      button.disabled = true;
-      button.classList.add("disabled");
-      startTimer();
-      
-      setTimeout(() => {
-          clearInterval(countdownTimer);
-          button.disabled = false;
-          button.classList.remove("disabled");
-          button.innerHTML = "Frissítés";
-          timeLeft = 30;
-        }, 30000);
-}*/
 
 async function tabokUpdate() {
     

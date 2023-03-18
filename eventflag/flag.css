@@ -12,7 +12,7 @@
 }
 
 @media (max-width: 768px) {
-    .container {
+    .container, .container-night {
         width: 90% !important;
     }
 }

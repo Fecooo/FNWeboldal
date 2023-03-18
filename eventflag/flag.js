@@ -1,21 +1,35 @@
-var ld = "light";
+var ld = "";
 
 window.onload = async function(){
+  
+  try{
+    let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
+    let data = await response.json();
+    document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
+  } catch(err) {
+    console.log(err);
+  }
+  
+  await kiirat();
 
-    try{
-        let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
-        let data = await response.json();
-        document.getElementById("body").style.backgroundImage = `url(${data.backgrounds.backgrounds[0].backgroundimage})`;
-    } catch(err) {
-        console.log(err);
+  if (localStorage.getItem('lightDark')){
+    if(localStorage.getItem('lightDark') == "dark") {
+        document.getElementById("lightdark").textContent = "🌙";
+    } else {
+        document.getElementById("lightdark").textContent = "☀️";
     }
-
-    await kiirat();
+    document.getElementById("cim").style.visibility ="visible";
+    ld = localStorage.getItem('lightDark');
+    toggle();
+  } else {
+    ld = "light";
+  }
 }
 
-function toggle() {
-
+async function toggle() {
   if (document.getElementById("lightdark").textContent == "🌙") {
+
+      localStorage.setItem('lightDark', 'dark');
 
       var elements = document.querySelectorAll(".container");
       for (var i = 0; i < elements.length; i++) {
@@ -27,6 +41,8 @@ function toggle() {
       document.getElementById("progressBorder").style.border = "5px solid white";
 
   } else if (document.getElementById("lightdark").textContent == "☀️") {
+
+      localStorage.setItem('lightDark', 'light');
 
       var elements = document.querySelectorAll(".container-night");
       for (var i = 0; i < elements.length; i++) {
@@ -130,5 +146,6 @@ async function kiirat() {
             
             document.getElementById("cont").appendChild(cont);
         }
-    }, 1000);
+        setTimeout(1000);
+    }, 0);
 }

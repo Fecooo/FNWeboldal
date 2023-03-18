@@ -16,8 +16,47 @@ window.onload = async function(){
         console.log(err);
     }
 
+    if (localStorage.getItem('lightDark')){
+        if(localStorage.getItem('lightDark') == "dark") {
+            document.getElementById("lightdark").textContent = "🌙";
+        } else {
+            document.getElementById("lightdark").textContent = "☀️";
+        }
+        document.getElementById("container-wrapper").style.visibility ="visible";
+        document.getElementById("cim").style.visibility ="visible";
+        toggle();
+    }
+
     await tabokUpdate();
     await lejar();
+
+}
+
+function toggle() {
+
+    if (document.getElementById("lightdark").textContent == "🌙") {
+
+        localStorage.setItem('lightDark', 'dark');
+
+        var elements = document.querySelectorAll(".container");
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.value = "container-night";
+        }
+
+        document.getElementById("lightdark").textContent = "☀️";
+
+
+    } else if (document.getElementById("lightdark").textContent == "☀️") {
+
+        localStorage.setItem('lightDark', 'light');
+
+        var elements = document.querySelectorAll(".container-night");
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.value = "container";
+        }
+
+        document.getElementById("lightdark").textContent = "🌙";
+    }
 }
 
 async function update(){
@@ -347,5 +386,7 @@ function kulonbseg() {
             document.getElementById("tabokKivett").appendChild(lik);
         }
     }
+
+    toggle();
 
 }

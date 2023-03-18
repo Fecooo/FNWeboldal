@@ -1,9 +1,9 @@
 var verKey = "";
 var titkositatlan = [];
-var titkositott = []
+var titkositott = [];
 
 window.onload = async function(){
-
+    
     try {
         let response = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/dynamicbackgrounds", {method: "GET"});
         let data = await response.json();
@@ -11,13 +11,25 @@ window.onload = async function(){
     } catch (err) {
         console.log(err);
     }
-
+    
     await kiirat();
+
+    if (localStorage.getItem('lightDark')){
+        if(localStorage.getItem('lightDark') == "dark") {
+            document.getElementById("lightdark").textContent = "🌙";
+        } else {
+            document.getElementById("lightdark").textContent = "☀️";
+        }
+        document.getElementById("container").style.visibility ="visible";
+        toggle();
+    }
 }
 
 function toggle() {
 
     if (document.getElementById("lightdark").textContent == "🌙") {
+
+        localStorage.setItem('lightDark', 'dark');
 
         var elements = document.querySelectorAll(".container");
         for (var i = 0; i < elements.length; i++) {
@@ -37,6 +49,8 @@ function toggle() {
 
 
     } else if (document.getElementById("lightdark").textContent == "☀️") {
+
+        localStorage.setItem('lightDark', 'light');
 
         var elements = document.querySelectorAll(".container-night");
         for (var i = 0; i < elements.length; i++) {

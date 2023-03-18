@@ -1,4 +1,4 @@
-@media (min-width: 768px) {
+@media (min-width: 700px) {
     .nav-item{
         border: 3px solid rgb(255, 255, 255);
         border-radius: 15px;
@@ -20,6 +20,10 @@
     }
     .container, .containerN, .container-night, .containerN-night, #titkositott, #titkositatlan {
         width: 90% !important;
+        margin: auto;
+    }
+    #ver {
+        width: 70% !important;
     }
 }
 
@@ -76,14 +80,14 @@ h5 {
 }
 
 .containerN {
-    width: 30%;
+    width: 50%;
     margin: 25px auto;
     display: flex;
     align-items: center;
 }
 
 .containerN-night {
-    width: 30%;
+    width: 50%;
     margin: 25px auto;
     display: flex;
     align-items: center;

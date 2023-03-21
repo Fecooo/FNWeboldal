@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 768px) {
-    .container {
+    .container, .container-night {
         width: 90% !important;
     }
 }
@@ -94,3 +94,13 @@ li {
     list-style: none;
     padding-left: 20px;
 }
+
+.progressText {
+    position: absolute;
+    align-self: center;
+    text-align: center;
+    /*left: 49%;*/
+    font-size: 25px;
+    margin: 0 auto;
+    font-weight: bold;
+  }

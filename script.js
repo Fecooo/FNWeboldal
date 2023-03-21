@@ -116,9 +116,14 @@ async function visszaszamlalo() {
 
       document.getElementById("countdown").innerText = days  + "n " + hours + "ó " + minutes + "p " + seconds + "mp";
 
-      const szazalek = Math.round(100 - remainingTime / fullTime * 100 , 0);
+      const szazalek = Math.round(100 - remainingTime / fullTime * 100 , 0) + "%";
 
-      document.getElementById("progressBar").style.width = szazalek + "%";
+      if(document.getElementById("progressText").innerText.toString() != szazalek.toString()) {
+
+        document.getElementById("progressText").innerText = szazalek;
+  
+        document.getElementById("progressBar").style.width = szazalek;
+      }
     }, 1000);
 
   } catch(err) {

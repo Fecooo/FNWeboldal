@@ -44,6 +44,7 @@
 .container {
     align-items: center;
     justify-content: center;
+    text-align: right;
     box-shadow: 5px 5px 5px #000000;
     background-color: rgba(255, 255, 255, 0.7);
     width: 30%;
@@ -55,6 +56,7 @@
 .container-night {
     align-items: center;
     justify-content: center;
+    text-align: right;
     border: solid 1px #fff;
     box-shadow: 5px 5px 5px #fff;
     background-color: rgba(0, 0, 0, 0.7);
@@ -67,7 +69,7 @@
 
 h1 {
     width: 50% !important;
-    text-align: center;
+    text-align: center !important;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 5px;

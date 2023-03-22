@@ -13,17 +13,18 @@ window.onload = async function(){
   await kiirat();
 
   if (localStorage.getItem('lightDark')){
-    if(localStorage.getItem('lightDark') == "dark") {
-        document.getElementById("lightdark").textContent = "🌙";
-    } else {
-        document.getElementById("lightdark").textContent = "☀️";
-    }
-    document.getElementById("cim").style.visibility ="visible";
     ld = localStorage.getItem('lightDark');
-    toggle();
   } else {
+    localStorage.setItem('lightDark', 'dark');
     ld = "light";
   }
+  if(localStorage.getItem('lightDark') == "dark") {
+    document.getElementById("lightdark").textContent = "🌙";
+  } else {
+    document.getElementById("lightdark").textContent = "☀️";
+  }
+  document.getElementById("cim").style.visibility ="visible";
+  toggle();
 }
 
 async function toggle() {

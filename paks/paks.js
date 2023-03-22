@@ -15,14 +15,15 @@ window.onload = async function(){
     await kiirat();
 
     if (localStorage.getItem('lightDark')){
-        if(localStorage.getItem('lightDark') == "dark") {
-            document.getElementById("lightdark").textContent = "🌙";
-        } else {
-            document.getElementById("lightdark").textContent = "☀️";
-        }
-        document.getElementById("container").style.visibility ="visible";
-        toggle();
+        localStorage.setItem('lightDark', 'dark');
     }
+    if(localStorage.getItem('lightDark') == "dark") {
+        document.getElementById("lightdark").textContent = "🌙";
+    } else {
+        document.getElementById("lightdark").textContent = "☀️";
+    }
+    document.getElementById("container").style.visibility ="visible";
+    toggle();
 }
 
 function toggle() {

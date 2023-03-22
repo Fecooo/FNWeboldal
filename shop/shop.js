@@ -28,6 +28,11 @@ window.onload = async function(){
         document.getElementById("container-wrapper").style.visibility ="visible";
         document.getElementById("cim").style.visibility ="visible";
         toggle();
+    } else {
+        localStorage.setItem('lightDark', 'dark');
+        document.getElementById("container-wrapper").style.visibility ="visible";
+        document.getElementById("cim").style.visibility ="visible";
+        toggle();
     }
 }
 
@@ -69,7 +74,7 @@ async function tabokUpdate() {
     try {
         let fetchResponse = await fetch("https://cors-anywhere.herokuapp.com/https://api.nitestats.com/v1/epic/modes-smart", { method : "GET" });
         const data = await fetchResponse.json();
-
+        console.log(data.channels['client-events'].states[0].state.sectionStoreEnds)
         const tabok = [];
         
         for (const key in data.channels['client-events'].states[0].state.sectionStoreEnds) {
@@ -244,7 +249,7 @@ async function ping() {
             }
             nextLejarat[0] = parseInt(data.channels['client-events'].states[1].state.dailyStoreEnd.split('T')[0].split('-')[1]);
     
-            const countdownInterval = setInterval(() => {
+            /*const countdownInterval = setInterval(() => {
 
                 const now1 = new Date().getTime();
                 const targetDate1 = new Date(data.channels['client-events'].states[1].state.dailyStoreEnd);
@@ -272,8 +277,8 @@ async function ping() {
           
                 p.innerText = hours + " ó " + minutes + " p " + seconds + " mp";
           
-              }, 1000);
-            //p.innerText = "A következő shop lejár " + honapok[nextLejarat[0] - 1] + " " + nextLejarat[1] + ". " + nextLejarat[2] + " órakor";
+              }, 1000);*/
+            p.innerText = "A következő shop lejár " + honapok[nextLejarat[0] - 1] + " " + nextLejarat[1] + ". " + nextLejarat[2] + " órakor";
             h3.innerText = "Következő shop (" + tabok.length + "x):";
     
             let fetchResponse1 = await fetch("https://cors-anywhere.herokuapp.com/https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/shop-sections?lang=en", { method : "GET" });
@@ -339,13 +344,13 @@ async function ping() {
             }
     
             kulonbseg();
+        } else {
+            setTimeout(lejar, 15000);
         }
 
     } catch(err) {
         console.log(err);
     }
-
-    setTimeout(lejar, 15000);
 }
 
 function kulonbseg() {

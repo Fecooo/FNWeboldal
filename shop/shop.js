@@ -19,21 +19,17 @@ window.onload = async function(){
     await tabokUpdate();
     await lejar();
     
-    if (localStorage.getItem('lightDark')){
-        if(localStorage.getItem('lightDark') == "dark") {
-            document.getElementById("lightdark").textContent = "🌙";
-        } else {
-            document.getElementById("lightdark").textContent = "☀️";
-        }
-        document.getElementById("container-wrapper").style.visibility ="visible";
-        document.getElementById("cim").style.visibility ="visible";
-        toggle();
-    } else {
+    if (!localStorage.getItem('lightDark')){
         localStorage.setItem('lightDark', 'dark');
-        document.getElementById("container-wrapper").style.visibility ="visible";
-        document.getElementById("cim").style.visibility ="visible";
-        toggle();
     }
+    if(localStorage.getItem('lightDark') == "dark") {
+        document.getElementById("lightdark").textContent = "🌙";
+    } else {
+        document.getElementById("lightdark").textContent = "☀️";
+    }
+    document.getElementById("container-wrapper").style.visibility ="visible";
+    document.getElementById("cim").style.visibility ="visible";
+    toggle();
 }
 
 function toggle() {

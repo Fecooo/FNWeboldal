@@ -11,16 +11,17 @@ window.onload = async function () {
     console.log(err);
   }
 
-  if (localStorage.getItem('lightDark')){
-    if(localStorage.getItem('lightDark') == "dark") {
-      document.getElementById("lightdark").textContent = "🌙";
-    } else {
-      document.getElementById("lightdark").textContent = "☀️";
-    }
-    document.getElementById("content").style.visibility ="visible";
-    document.getElementById("cim").style.visibility ="visible";
-    toggle();
+  if (!localStorage.getItem('lightDark')){
+    localStorage.setItem('lightDark', 'dark');
   }
+  if(localStorage.getItem('lightDark') == "dark") {
+    document.getElementById("lightdark").textContent = "🌙";
+  } else {
+    document.getElementById("lightdark").textContent = "☀️";
+  }
+  document.getElementById("content").style.visibility ="visible";
+  document.getElementById("cim").style.visibility ="visible";
+  toggle();
 
   visszaszamlalo();
 };
